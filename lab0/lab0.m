@@ -25,6 +25,9 @@
 pkg load image
 
 input = imread('CV_lab_0_colors/peppers.png');
+%input = imread('CV_lab_0_colors/red.png');
+%input = imread('CV_lab_0_colors/blue.jpg');
+
 %imshow(input);
 
 % extract RGB channels
@@ -33,16 +36,18 @@ G = input(:, :, 2);
 B = input(:, :, 3);
 
 % get histValues for each channel
-[yRed, x] = imhist(R);
-[yGreen, x] = imhist(G);
-[yBlue, x] = imhist(B);
+[Red, x] = imhist(R);
+[Green, x] = imhist(G);
+[Blue, x] = imhist(B);
 
 % plotting them together
-plot(x, yRed, 'r', x, yGreen, 'g', x, yBlue, 'b'), legend('R', 'G', 'B');
-%stem(x, yRed, 'r', x, yGreen, 'g', x, yBlue, 'b');
+%plot(x, Red/1000, 'r', x, Green/1000, 'g', x, Blue/1000, 'b'), legend('R', 'G', 'B'), xlabel('Bin values'), ylabel('Counts/1000');
 
 % RGB to HSV
 input_hsv = rgb2hsv(input);
+H = input_hsv(:,:,1);	
+[hue, binValues] = imhist(H); 
+plot(binValues, hue/1000), xlabel('Bin values'), ylabel('Hue counts/1000'); 
 
 
 
