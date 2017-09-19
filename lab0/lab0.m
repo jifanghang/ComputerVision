@@ -41,13 +41,13 @@ B = input(:, :, 3);
 [Blue, x] = imhist(B);
 
 % plotting them together
-%plot(x, Red/1000, 'r', x, Green/1000, 'g', x, Blue/1000, 'b'), legend('R', 'G', 'B'), xlabel('Bin values'), ylabel('Counts/1000');
+plot(x, Red/1000, 'r', x, Green/1000, 'g', x, Blue/1000, 'b'), legend('R', 'G', 'B'), xlabel('Bin values'), ylabel('Counts/1000');
 
 % RGB to HSV
 input_hsv = rgb2hsv(input);
 H = input_hsv(:,:,1);	
 [hue, binValues] = imhist(H); 
-plot(binValues, hue/1000), xlabel('Bin values'), ylabel('Hue counts/1000'); 
+%plot(binValues, hue/1000), xlabel('Bin values'), ylabel('Hue counts/1000'); 
 
 
 
