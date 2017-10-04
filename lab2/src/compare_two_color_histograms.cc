@@ -1,4 +1,7 @@
-
+/*
+* by Fanghang Ji
+* Read images from two folders and compare them, showing the closest match and the second closest match
+*/
 #include <iostream>
 #include <string>
 #include "boost/filesystem.hpp"
@@ -8,6 +11,7 @@ using namespace std;
 using namespace jir;
 using namespace boost; 
 using namespace boost::filesystem;
+using namespace cv;
 
 bool verify_folder(path& p){
     if (!exists(p)){
@@ -46,9 +50,9 @@ void compare_hist_vectors(const vector<LuvColorHistogram>& h1, const vector<LuvC
     vector<LuvColorHistogram>::const_iterator it1= h1.begin();
     vector<path>::const_iterator f1 = file_paths1.begin();
     int c1(0);
-    for (; it1 != h1.end(); ++it1){
+    for (; it1 != h1.end(); ++it1, ++f1){
         vector<LuvColorHistogram>::const_iterator it2= h2.begin();
-        vector<path>::const_iterator f1 = file_paths1.begin();
+        vector<path>::const_iterator f2 = file_paths2.begin();
         int c2(0);
         // Fill-in: iterate over h2 and compare it1 and it2
                 // For each histogram in h1, find the closest two in h2.
@@ -59,7 +63,7 @@ void compare_hist_vectors(const vector<LuvColorHistogram>& h1, const vector<LuvC
         path min_path, min_path2;
 
         //iterates over h2
-        for( ; it2 != h2.end(); ++it2) {
+        for( ; it2 != h2.end(); ++it2, ++f2) {
             double cmp = it1->compare( (*it2) );
             if(cmp < min) {
                 min_path2 = min_path;
@@ -68,8 +72,29 @@ void compare_hist_vectors(const vector<LuvColorHistogram>& h1, const vector<LuvC
                 min_path = *f2;
             } else if (cmp < min2) {
                 min2 = cmp;
+                min_path2 = *f2;
             }
         }
+
+        //output the mins
+        cout << "\nmin: " << min << "\nmin2: " << min2 << endl;
+
+        //showing images
+        //Sequences:
+        //im1: Test image; im2: closest match; im3: second closest match
+        Mat im1 = imread(f1->string());
+        Mat im2 = imread(min_path.string());
+        Mat im3 = imread(min_path2.string());
+
+        Mat res( im1.size( ).height, im1.size( ).width + im2.size( ).width + im3.size( ).width, CV_8UC3 );
+        Mat left( res, Rect( 0, 0, im1.size( ).width, im1.size( ).height ) );
+        im1.copyTo( left );
+        Mat mid( res, Rect( im1.size( ).width, 0, im2.size( ).width, im2.size( ).height ) );
+        im2.copyTo( mid );
+        Mat right( res, Rect( im1.size( ).width + im2.size( ).width, 0, im3.size( ).width, im3.size( ).height ) );
+        im3.copyTo( right );
+        imshow( "Result", res );
+        waitKey(0);
     }
 }
 
