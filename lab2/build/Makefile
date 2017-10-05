@@ -177,6 +177,33 @@ src/luv_color_histogram.cc.s:
 	$(MAKE) -f CMakeFiles/compare_two_color_histograms.dir/build.make CMakeFiles/compare_two_color_histograms.dir/src/luv_color_histogram.cc.s
 .PHONY : src/luv_color_histogram.cc.s
 
+src/saturatedColorHistogram.o: src/saturatedColorHistogram.cc.o
+
+.PHONY : src/saturatedColorHistogram.o
+
+# target to build an object file
+src/saturatedColorHistogram.cc.o:
+	$(MAKE) -f CMakeFiles/compare_two_color_histograms.dir/build.make CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o
+.PHONY : src/saturatedColorHistogram.cc.o
+
+src/saturatedColorHistogram.i: src/saturatedColorHistogram.cc.i
+
+.PHONY : src/saturatedColorHistogram.i
+
+# target to preprocess a source file
+src/saturatedColorHistogram.cc.i:
+	$(MAKE) -f CMakeFiles/compare_two_color_histograms.dir/build.make CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.i
+.PHONY : src/saturatedColorHistogram.cc.i
+
+src/saturatedColorHistogram.s: src/saturatedColorHistogram.cc.s
+
+.PHONY : src/saturatedColorHistogram.s
+
+# target to generate assembly for a file
+src/saturatedColorHistogram.cc.s:
+	$(MAKE) -f CMakeFiles/compare_two_color_histograms.dir/build.make CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.s
+.PHONY : src/saturatedColorHistogram.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... src/luv_color_histogram.o"
 	@echo "... src/luv_color_histogram.i"
 	@echo "... src/luv_color_histogram.s"
+	@echo "... src/saturatedColorHistogram.o"
+	@echo "... src/saturatedColorHistogram.i"
+	@echo "... src/saturatedColorHistogram.s"
 .PHONY : help
 
 

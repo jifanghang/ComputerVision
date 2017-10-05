@@ -24,6 +24,8 @@ opencv2/imgproc/imgproc.hpp
 opencv2/highgui/highgui.hpp
 -
 
+../include/saturatedColorHistogram.hh
+
 /Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/compare_two_color_histograms.cc
 iostream
 -
@@ -43,6 +45,22 @@ algorithm
 -
 luv_color_histogram.hh
 /Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/luv_color_histogram.hh
+
+/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.cc
+iostream
+-
+string
+-
+boost/filesystem.hpp
+-
+opencv2/core/core.hpp
+/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/opencv2/core/core.hpp
+opencv2/highgui/highgui.hpp
+/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/opencv2/highgui/highgui.hpp
+opencv2/imgproc/imgproc.hpp
+/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/opencv2/imgproc/imgproc.hpp
+saturatedColorHistogram.hh
+/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.hh
 
 /usr/local/include/boost/assert.hpp
 boost/config.hpp

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/compare_two_color_histograms.cc" "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/build/CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o"
   "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/luv_color_histogram.cc" "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/build/CMakeFiles/compare_two_color_histograms.dir/src/luv_color_histogram.cc.o"
+  "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.cc" "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/build/CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

@@ -105,16 +105,42 @@ CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.
 CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o.provides.build: CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o
 
 
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o: CMakeFiles/compare_two_color_histograms.dir/flags.make
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o: ../src/saturatedColorHistogram.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o -c "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.cc"
+
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.cc" > CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.i
+
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.cc" -o CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.s
+
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.requires:
+
+.PHONY : CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.requires
+
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.provides: CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.requires
+	$(MAKE) -f CMakeFiles/compare_two_color_histograms.dir/build.make CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.provides.build
+.PHONY : CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.provides
+
+CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.provides.build: CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o
+
+
 # Object files for target compare_two_color_histograms
 compare_two_color_histograms_OBJECTS = \
 "CMakeFiles/compare_two_color_histograms.dir/src/luv_color_histogram.cc.o" \
-"CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o"
+"CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o" \
+"CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o"
 
 # External object files for target compare_two_color_histograms
 compare_two_color_histograms_EXTERNAL_OBJECTS =
 
 compare_two_color_histograms: CMakeFiles/compare_two_color_histograms.dir/src/luv_color_histogram.cc.o
 compare_two_color_histograms: CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o
+compare_two_color_histograms: CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o
 compare_two_color_histograms: CMakeFiles/compare_two_color_histograms.dir/build.make
 compare_two_color_histograms: /usr/local/lib/libopencv_stitching.3.3.0.dylib
 compare_two_color_histograms: /usr/local/lib/libopencv_superres.3.3.0.dylib
@@ -162,7 +188,7 @@ compare_two_color_histograms: /usr/local/lib/libopencv_objdetect.3.3.0.dylib
 compare_two_color_histograms: /usr/local/lib/libopencv_imgproc.3.3.0.dylib
 compare_two_color_histograms: /usr/local/lib/libopencv_core.3.3.0.dylib
 compare_two_color_histograms: CMakeFiles/compare_two_color_histograms.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable compare_two_color_histograms"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable compare_two_color_histograms"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/compare_two_color_histograms.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -172,6 +198,7 @@ CMakeFiles/compare_two_color_histograms.dir/build: compare_two_color_histograms
 
 CMakeFiles/compare_two_color_histograms.dir/requires: CMakeFiles/compare_two_color_histograms.dir/src/luv_color_histogram.cc.o.requires
 CMakeFiles/compare_two_color_histograms.dir/requires: CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o.requires
+CMakeFiles/compare_two_color_histograms.dir/requires: CMakeFiles/compare_two_color_histograms.dir/src/saturatedColorHistogram.cc.o.requires
 
 .PHONY : CMakeFiles/compare_two_color_histograms.dir/requires
 

@@ -12,6 +12,8 @@ include_directories( include ${OpenCV_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})  #${E
 
 add_executable( compare_two_color_histograms
  src/luv_color_histogram.cc
- src/compare_two_color_histograms.cc )
+ src/compare_two_color_histograms.cc
+ src/saturatedColorHistogram.cc
+ include/saturatedColorHistogram.hh )
 
 target_link_libraries( compare_two_color_histograms ${OpenCV_LIBS} ${Boost_LIBRARIES} ${Boost_FILESYSTEM_LIBRARY} )
