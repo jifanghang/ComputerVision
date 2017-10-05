@@ -3,6 +3,7 @@
 
 CMakeFiles/compare_two_color_histograms.dir/src/compare_two_color_histograms.cc.o
  ../include/luv_color_histogram.hh
+ ../include/saturatedColorHistogram.hh
  /Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/compare_two_color_histograms.cc
  /usr/local/include/boost/assert.hpp
  /usr/local/include/boost/cerrno.hpp

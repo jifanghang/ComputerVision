@@ -14,7 +14,23 @@ using namespace boost;
 using namespace std;
 using namespace cv;
 
-void SaturatedColorHistogram::normalize(void) {
+SaturatedColorHistogram::SaturatedColorHistogram() : nr_samples(0) {
+    histSize[0] = 30;
+    histSize[1] = 32;
+    histSize[2] = 30;
+
+    //setting the ranges for HSV
+    hue[0] = 0.0;
+    hue[1] = 179.0 + 0.1;
+
+    saturation[0] = 0.0;
+    saturation[1] = 255.0 + 0.1;
+
+    value[0] = 0.0;
+    value[1] = 255.0 + 0.1;
+}
+
+/*void SaturatedColorHistogram::normalize() {
     if (nr_samples == 0) return;
     for (int i_h = 0; i_h < get_nr_bins_h(); ++i_h) {
         for (int i_s = 0; i_s < get_nr_bins_s(); ++i_s) {
@@ -23,7 +39,7 @@ void SaturatedColorHistogram::normalize(void) {
             }
         }
     }
-}
+}*/
 
 bool SaturatedColorHistogram::load(const Mat &color_img, const Mat &mask) {
     nr_samples = 0;
@@ -57,7 +73,7 @@ bool SaturatedColorHistogram::load(const Mat &color_img, const Mat &mask) {
 
     // Explicitly normalize, so that the hist bins add to unity.
 
-    normalize();
+    //normalize();
     return true;
 }
 
@@ -71,7 +87,7 @@ bool SaturatedColorHistogram::load(const string &image_path_name) {
     return load(color_img, Mat());
 }
 
-double SaturatedColorHistogram::compare(const SaturatedColorHistogram &other) {
+double SaturatedColorHistogram::compare(const SaturatedColorHistogram &other) const{
     double result = 0.0;
     result = compareHist(hist, other.hist, CV_COMP_BHATTACHARYYA);
     return result;

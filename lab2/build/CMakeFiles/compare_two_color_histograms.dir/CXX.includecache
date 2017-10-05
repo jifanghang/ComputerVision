@@ -35,6 +35,8 @@ boost/filesystem.hpp
 /Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/boost/filesystem.hpp
 luv_color_histogram.hh
 /Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/luv_color_histogram.hh
+saturatedColorHistogram.hh
+/Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/saturatedColorHistogram.hh
 
 /Users/Jamie/Dropbox/5th semester/CV/Assignments/lab2/src/luv_color_histogram.cc
 iostream

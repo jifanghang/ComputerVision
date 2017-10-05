@@ -21,7 +21,7 @@ public:
 	//load image and convert from BGR to HSV
 	bool load(const string& path);
 	bool load(const Mat& image, const Mat& mask);
-	double compare(const SaturatedColorHistogram& other);
+	double compare(const SaturatedColorHistogram& other) const;
 
 	//getters
 	Mat& get_histogram() {
