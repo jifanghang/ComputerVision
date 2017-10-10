@@ -23,7 +23,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/Compiler/Clang.cmake"
   "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/Compiler/GNU.cmake"
-  "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/FindBoost.cmake"
   "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/FindPackageMessage.cmake"
   "/usr/local/Cellar/cmake/3.9.1/share/cmake/Modules/Platform/Darwin-AppleClang-C.cmake"
@@ -53,5 +52,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/compare_two_color_histograms.dir/DependInfo.cmake"
+  "CMakeFiles/lab3.dir/DependInfo.cmake"
   )
