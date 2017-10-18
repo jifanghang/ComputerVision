@@ -1,0 +1,3 @@
+/Users/Jamie/Dropbox/5th semester/CV/Assignments_CV/lab4/build/CMakeFiles/rebuild_cache.dir
+/Users/Jamie/Dropbox/5th semester/CV/Assignments_CV/lab4/build/CMakeFiles/edit_cache.dir
+/Users/Jamie/Dropbox/5th semester/CV/Assignments_CV/lab4/build/CMakeFiles/lab4.dir
