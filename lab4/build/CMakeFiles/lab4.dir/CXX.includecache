@@ -13,11 +13,15 @@ opencv2/contrib/contrib.hpp
 /Users/Jamie/Dropbox/5th semester/CV/Assignments_CV/lab4/opencv2/contrib/contrib.hpp
 opencv2/highgui/highgui.hpp
 /Users/Jamie/Dropbox/5th semester/CV/Assignments_CV/lab4/opencv2/highgui/highgui.hpp
+opencv2/ml/ml.hpp
+/Users/Jamie/Dropbox/5th semester/CV/Assignments_CV/lab4/opencv2/ml/ml.hpp
 iostream
 -
 fstream
 -
 sstream
+-
+stdlib.h
 -
 
 /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/contrib/contrib.hpp
@@ -179,6 +183,18 @@ opencv2/imgproc/types_c.h
 /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/imgproc/types_c.h
 opencv2/core/core_c.h
 /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/imgproc/opencv2/core/core_c.h
+
+/usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/ml/ml.hpp
+opencv2/core/core.hpp
+/usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/ml/opencv2/core/core.hpp
+limits.h
+-
+map
+-
+string
+-
+iostream
+-
 
 /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/objdetect/objdetect.hpp
 opencv2/core/core.hpp

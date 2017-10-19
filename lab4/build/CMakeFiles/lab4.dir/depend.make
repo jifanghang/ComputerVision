@@ -19,5 +19,6 @@ CMakeFiles/lab4.dir/facerec_eigenfaces.cpp.o: /usr/local/Cellar/opencv@2/2.4.13.
 CMakeFiles/lab4.dir/facerec_eigenfaces.cpp.o: /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/highgui/highgui_c.h
 CMakeFiles/lab4.dir/facerec_eigenfaces.cpp.o: /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/imgproc/imgproc.hpp
 CMakeFiles/lab4.dir/facerec_eigenfaces.cpp.o: /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/imgproc/types_c.h
+CMakeFiles/lab4.dir/facerec_eigenfaces.cpp.o: /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/ml/ml.hpp
 CMakeFiles/lab4.dir/facerec_eigenfaces.cpp.o: /usr/local/Cellar/opencv@2/2.4.13.4/include/opencv2/objdetect/objdetect.hpp
 

@@ -1,28 +1,18 @@
 /*
- * Copyright (c) 2011. Philipp Wagner <bytefish[at]gmx[dot]de>.
- * Released to public domain under terms of the BSD Simplified license.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *   * Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *   * Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *   * Neither the name of the organization nor the names of its contributors
- *     may be used to endorse or promote products derived from this software
- *     without specific prior written permission.
- *
- *   See <http://www.opensource.org/licenses/bsd-license>
- */
+* Retrieved from https://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html
+* Modified by Fanghang Ji
+* Compute Eigenfaces
+*/
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/contrib/contrib.hpp"
 #include "opencv2/highgui/highgui.hpp"
+#include "opencv2/ml/ml.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <stdlib.h>
 
 using namespace cv;
 using namespace std;
@@ -57,7 +47,19 @@ static void read_csv(const string& filename, vector<Mat>& images, vector<int>& l
         getline(liness, path, separator);
         getline(liness, classlabel);
         if(!path.empty() && !classlabel.empty()) {
-            images.push_back(imread(path, 0));
+            // // images.push_back(imread(path, 0));
+            // Mat m = imread(path, 1);
+            // Mat m2;
+            // cvtColor(m,m2,CV_BGR_GRAY);
+            // images.push_back(m2);
+            // labels.push_back(atoi(classlabel.c_str()));
+            cout << path << endl;
+            Mat test = imread(path, CV_LOAD_IMAGE_GRAYSCALE);
+            if(!test.data){
+                fprintf(stderr, "failed to load image\n");
+                exit(1);
+            }
+            images.push_back(test);
             labels.push_back(atoi(classlabel.c_str()));
         }
     }
