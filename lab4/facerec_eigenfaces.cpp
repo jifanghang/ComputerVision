@@ -1,21 +1,65 @@
 /*
 * Retrieved from https://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html
 * Modified by Fanghang Ji
-* Compute Eigenfaces
+* Eigenfaces
 */
 
 #include "opencv2/core/core.hpp"
 #include "opencv2/contrib/contrib.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/ml/ml.hpp"
+#include "boost/filesystem.hpp"
 
 #include <iostream>
-#include <fstream>
+#include <string>
+//#include <fstream>
 #include <sstream>
 #include <stdlib.h>
 
 using namespace cv;
 using namespace std;
+using namespace boost; 
+using namespace boost::filesystem;
+
+
+bool verify_folder(path& p){
+    if (!exists(p)){
+        cerr<< "Folder "<< p.c_str()<< " does not exist"<< endl;
+        return false;
+    }
+    if (!(is_directory(p))){
+        cerr<< p.c_str()<< " is not a folder."<< endl;
+        return false;
+    }
+    return true;
+}
+
+//load images using boost instead of reading the CSV file
+void load(path& p, vector<Mat>& images, vector<path>& file_paths, vector<int>& labels){
+    //iterate over a folder using boost.
+    directory_iterator it(p);
+    directory_iterator end_it;
+    for (; it != end_it; it++) {
+        path pf(it->path());
+        if (is_directory(pf)) continue;
+        cout << "loading " << pf.c_str() << "..." << endl;
+        /*LuvColorHistogram hist;
+        if (hist.load(pf.c_str())) {
+            hist_vector.push_back(hist);
+            hist_vector.back().load(it->path().string(), false);
+            file_paths.push_back(it -> path());
+        }*/
+        cout << path << endl;
+        Mat test = imread(path, CV_LOAD_IMAGE_GRAYSCALE);
+        if(!test.data){
+            fprintf(stderr, "failed to load image\n");
+            exit(1);
+        }
+        images.push_back(test);
+        labels.push_back(atoi(classlabel.c_str()));
+        file_paths.push_back(it -> path());
+    }
+}
 
 static Mat norm_0_255(InputArray _src) {
     Mat src = _src.getMat();
