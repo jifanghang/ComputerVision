@@ -21,8 +21,6 @@ iostream
 -
 string
 -
-fstream
--
 sstream
 -
 stdlib.h

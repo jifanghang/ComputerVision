@@ -9,7 +9,7 @@ z = xyz(:,3);
 % lab3 1.2
 % linear regression methods Ax = b 
 % here B is 441 * 1 matrix filled with 1
-b = ones(total,1);
+%b = ones(total,1);
 AtA = transpose(xyz) * xyz;
 % solve for plane-parameters  (A, B, C) 
 plane_parameter = inv(AtA) * (transpose(xyz) * b)

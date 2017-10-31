@@ -2,6 +2,7 @@
 * Retrieved from https://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html
 * Modified by Fanghang Ji
 * Eigenfaces
+* Use 'boost' library to iterate throught folder instead of reading CSV file
 */
 
 #include "opencv2/core/core.hpp"
@@ -21,7 +22,25 @@ using namespace std;
 using namespace boost; 
 using namespace boost::filesystem;
 
+//check whether a character is a digit
+//for later extracting int from string
+struct not_digit {
+    bool operator() (const char c) {
+        return c != ' ' && !isdigit(c);
+    }
+};
+//extract int from string
+int extract_int (string str) {
+    not_digit nd;
+    string::iterator end = remove_if(str.begin(), str.end(), nd);
+    string all_numbers(str.begin(), end);
+    stringstream ss(all_numbers);
+    int i = 0;
+    ss >> i;
+    return i;
+}
 
+//take the literal meaning - verify the given folder before iterate through it
 bool verify_folder(path& p){
     if (!exists(p)){
         cerr<< "Folder "<< p.c_str()<< " does not exist"<< endl;
@@ -35,29 +54,30 @@ bool verify_folder(path& p){
 }
 
 //load images using boost instead of reading the CSV file
-void load(path& p, vector<Mat>& images, vector<path>& file_paths, vector<int>& labels){
+void load(path& p, vector<Mat>& images, vector<path>& image_paths, vector<int>& labels){
     //iterate over a folder using boost.
     directory_iterator it(p);
     directory_iterator end_it;
     for (; it != end_it; it++) {
         path pf(it->path());
         if (is_directory(pf)) continue;
+        //to avoid the '.DS_Store' files in macOS folders 
+        string macOS_store("../yalefaces-centered/.DS_Store");
+        if (pf.c_str() == macOS_store) continue;
         cout << "loading " << pf.c_str() << "..." << endl;
-        /*LuvColorHistogram hist;
-        if (hist.load(pf.c_str())) {
-            hist_vector.push_back(hist);
-            hist_vector.back().load(it->path().string(), false);
-            file_paths.push_back(it -> path());
-        }*/
-        cout << path << endl;
-        Mat test = imread(path, CV_LOAD_IMAGE_GRAYSCALE);
+#ifdef DEBUG
+        cout << pf << endl;
+#endif
+        Mat test = imread(pf.c_str(), CV_LOAD_IMAGE_GRAYSCALE);
         if(!test.data){
             fprintf(stderr, "failed to load image\n");
             exit(1);
         }
         images.push_back(test);
-        labels.push_back(atoi(classlabel.c_str()));
-        file_paths.push_back(it -> path());
+        labels.push_back(extract_int(pf.c_str()));
+
+        cout << "label extracted: " << extract_int(pf.c_str()) << endl;
+        image_paths.push_back(pf);
     }
 }
 
@@ -79,6 +99,7 @@ static Mat norm_0_255(InputArray _src) {
     return dst;
 }
 
+#ifdef READCSV
 static void read_csv(const string& filename, vector<Mat>& images, vector<int>& labels, char separator = ';') {
     std::ifstream file(filename.c_str(), ifstream::in);
     if (!file) {
@@ -108,23 +129,37 @@ static void read_csv(const string& filename, vector<Mat>& images, vector<int>& l
         }
     }
 }
+#endif
 
 int main(int argc, const char *argv[]) {
+    // These vectors hold the images and corresponding labels.
+    vector<Mat> images;
+    vector<int> labels;
+    vector<path> p_images;
+    // Check for valid command line arguments, print usage
+    // if no arguments were given.
+    if (argc < 2) {
+        cout << "usage: " << argv[0] << " [image folder] [output_folder] " << endl;
+        exit(1);
+    }
+    //input folder
+    path p_images_folder(argv[1]);
+    if (!verify_folder(p_images_folder)) return -1;
+    //Output folder - if not specified then just current folder by default
+    string output_folder = ".";
+    if (argc == 3) output_folder = string(argv[2]);
+    load(p_images_folder, images, p_images, labels);
+
+//This is the original reading CSV file method
+#ifdef READCSV
     // Check for valid command line arguments, print usage
     // if no arguments were given.
     if (argc < 2) {
         cout << "usage: " << argv[0] << " <csv.ext> <output_folder> " << endl;
         exit(1);
     }
-    string output_folder = ".";
-    if (argc == 3) {
-        output_folder = string(argv[2]);
-    }
     // Get the path to your CSV.
     string fn_csv = string(argv[1]);
-    // These vectors hold the images and corresponding labels.
-    vector<Mat> images;
-    vector<int> labels;
     // Read in the data. This can fail if no valid
     // input filename is given.
     try {
@@ -134,6 +169,8 @@ int main(int argc, const char *argv[]) {
         // nothing more we can do
         exit(1);
     }
+#endif
+
     // Quit if there are not enough images for this demo.
     if(images.size() <= 1) {
         string error_message = "This demo needs at least 2 images to work. Please add more images to your data set!";
