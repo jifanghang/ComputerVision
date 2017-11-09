@@ -139,7 +139,7 @@ int main(int argc, const char *argv[]) {
     // Check for valid command line arguments, print usage
     // if no arguments were given.
 	if (argc < 2) {
-		cout << "usage: " << argv[0] << " [image folder] [output_folder] " << endl;
+		cout << "usage: " << argv[0] << " [image folder] [output_folder] [Yoda path]" << endl;
 		exit(1);
 	}
     //input folder
@@ -147,8 +147,15 @@ int main(int argc, const char *argv[]) {
 	if (!verify_folder(p_images_folder)) return -1;
     //Output folder - if not specified then just current folder by default
 	string output_folder = ".";
-	if (argc == 3) output_folder = string(argv[2]);
+	if (argc == 4) output_folder = string(argv[2]);
 	load(p_images_folder, images, p_images, labels);
+	//reads the Yoda image
+	path yoda_path(argv[3]);
+	Mat Yoda = imread(yoda_path.c_str(), CV_LOAD_IMAGE_GRAYSCALE);
+	if(!Yoda.data){
+		fprintf(stderr, "failed to load image\n");
+		exit(1);
+	}
 
 //This is the original reading CSV file method
 #ifdef READCSV
@@ -212,7 +219,8 @@ int main(int argc, const char *argv[]) {
 	model->train(images, labels);
     // The following line predicts the label of a given
     // test image:
-	int predictedLabel = model->predict(testSample);
+    // Here we use the Yoda image to compare
+	int predictedLabel = model->predict(Yoda);
     //
     // To get the confidence of a prediction call the model with:
     //
@@ -220,13 +228,21 @@ int main(int argc, const char *argv[]) {
     //      double confidence = 0.0;
     //      model->predict(testSample, predictedLabel, confidence);
     //
-	string result_message = format("Predicted class = %d / Actual class = %d.", predictedLabel, testLabel);
+    
+	string result_message = format("Predicted class = %d ", predictedLabel);
 	cout << result_message << endl;
 
-    // //display predicted image and test image
-    // imshow("test", testSample);
+	int label_num = 0;
+	for(int i = 0; i < labels.size(); i++) {
+		if (labels[i] == predictedLabel) label_num = i;
+	}
+
+    //display predicted image and yoda image
+    imshow("Test image", Yoda);
+    waitKey(0);
     // predictedLabel *= 10;   //ten samples
-    // imshow("Predicted", images[predictedLabel]);
+    imshow("Predicted", images[label_num]);
+    waitKey(0);
 
     // Here is how to get the eigenvalues of this Eigenfaces model:
 	Mat eigenvalues = model->getMat("eigenvalues");
